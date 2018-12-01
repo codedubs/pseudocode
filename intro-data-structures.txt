@@ -19,25 +19,32 @@
 
   b. members.push("Mary");
 
-  c. var find = members.find(function(member) {
-        return member === "Josh";
-     })
+  c. function findMember(member) {
+       for (let i = 0; i <members.length; i++) {
+          if (member === members[i]) {
+            return members.indexOf(members[i])
+          }
+       }
+       return false;
+     }
 
-     console.log(find);
+     console.log(findMember("Josh")); // prints "2"
 
-  d.
+  d. If not found, should print "Member not found".
+  
      function findMember(member) {
        var members = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
 
        for (let i = 0; i < members.length; i++) {
          if (member != members[i]) {
-            members.push(member);
-            return members;
+           return "Member not found";
+         } else {
+           return member;
          }
        }
      }
 
-     findMember('Emily');
+     findMember('Emily'); // prints "Member not found"
 
   e. members.splice(1, 0, "Melissa")
 
@@ -50,8 +57,28 @@
    sorted, deleted, removed, added, and manipulated based on a customer's preferences. Maybe they
    would like to add an item to their list, or later change their mind and want to delete it.
 
+   var shoppingList = ['apple', 'bread', 'milk', 'pasta', 'water', 'cookies'];
+
+   shoppingList.push('bananas'); // add to shopping list 'bananas'
+   console.log(shoppingList); // shoppingList = ['apple', 'bread', 'milk', 'pasta', 'water', 'cookies', 'bananas']
+   shoppingList.unshift(); // remove 'apple'
+   shoppingList.sort(); // alphabetize shopping list
+   shoppingList.pop(); // remove last item in list
+   console.log(shoppingList); // shoppingList = ['bananas', 'bread', 'cookies', 'milk', 'pasta']
+
 3. How would your data structure allow developers to access and manipulate the data?
 
    Javascript array methods allow for the manipulation and access of data within an
    array. Arrays as data structures would have this ability. Because data is indexed
-   sequentially, developers can access data elements by index.
+   sequentially, developers can access data elements by index. For each shopping
+   list item in the array, the function below can access the array and print the items.
+
+   var shoppingList = ['apple', 'bread', 'milk', 'pasta', 'water', 'cookies'];
+
+   shoppingList.forEach(function(item) {
+      console.log(item);
+   });
+
+   // prints 'apple'
+   // prints 'bread'
+   ...

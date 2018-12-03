@@ -1,0 +1,92 @@
+1. What is the main difference between a stack and a queue?
+
+2. What are the similarities between stacks and queues?
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO
+   options in a word processor such as Microsoft Word. Which data structure
+   would you use for each option and why?
+
+
+1. A stack, as in a stack data structure, uses a LIFO approach. The last item
+   in is the first to get processed. A queue on the other hand, uses a FIFO
+   order; the first element in is the first out.
+
+2. Stacks and queues both provide developers with methods to create an order
+   of operation for tasks, and arrange elements accordingly. They are both
+   linear data structures.
+
+3. Both use a stack data structure. In UNDO, the last action would need to be undone. It makes sense for LIFO
+   to be used here since the last text would be the first text on the stack to come off.
+   In REDO, the undone action that was popped of the stack would need to be pushed back onto the stack.
+
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+
+  function reverse(string) {
+    let stack = [];
+
+    for (let char of string) {
+      stack.push(char)
+    }
+
+    let reversed = '';
+
+    while (stack != 0) {
+      let r = stack.pop()
+      reversed.push(r)
+    }
+    return reversed;
+  }
+
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure
+   mirror the functionality of a LIFO data structure. Since the internal list is not the
+   same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+   FUNCTION QUEUE
+     FUNCTION enqueue(element)
+      APPEND element to end of array
+     END FUNCTION
+
+     FUNCTION dequeue
+      SET temp to the last element
+      DELETE last element of array / item in stack
+      RETURN temp
+     END FUNCTION
+   END FUNCTION
+
+    function queue() {
+      this.stack = [];
+
+      function enqueue(element) {
+         this.stack.push(element);
+      }
+
+      function dequeue() {
+        var temp = this.stack.pop();
+
+        if (this.stack[this.stack.length-1]) {
+          delete this.stack.pop();
+          return temp;
+        } else {
+          return this.stack.pop();
+        }
+      }
+    }
+
+1. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+
+  class Queue {
+
+    constructor() {
+      this.stack = [];
+    }
+
+    enqueue(element) {
+      return this.stack.push(element);
+    }
+
+    dequeue() {
+      return this.stack.shift();
+    }
+
+  }

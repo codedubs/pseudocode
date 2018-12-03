@@ -19,32 +19,20 @@
 
   b. members.push("Mary");
 
-  c. function findMember(member) {
-       for (let i = 0; i <members.length; i++) {
-          if (member === members[i]) {
-            return members.indexOf(members[i])
-          }
-       }
-       return false;
-     }
-
-     console.log(findMember("Josh")); // prints "2"
-
-  d. If not found, should print "Member not found".
-  
+  c.
      function findMember(member) {
-       var members = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
-
-       for (let i = 0; i < members.length; i++) {
-         if (member != members[i]) {
-           return "Member not found";
-         } else {
-           return member;
-         }
-       }
+      if (members.indexOf(member) === -1) {
+          console.log("Member not found");
+      } else if (members.indexOf(member) > -1) {
+          console.log(member + " is at the index of " + members.indexOf(member));
+      }
      }
 
-     findMember('Emily'); // prints "Member not found"
+     console.log(findMember("Josh")); // prints "Josh is at the index of 2"
+
+  d. If not found, it should print -1 using the indexOf method. In this example, it logs the following:
+
+     console.log(findMember("Emily")); // prints "Member not found"
 
   e. members.splice(1, 0, "Melissa")
 

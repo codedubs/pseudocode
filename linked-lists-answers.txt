@@ -50,31 +50,59 @@ Example
 Input: a -> c -> d -> d -> a
 Output: a -> c -> d
 
-function contains(arr, element) {
-	for(var i = 0 ; i < arr.length; i++){
-    if(arr[i] === element) {
-      return true;
+
+function linkedList() {
+  var head = null;
+
+  var Node = function(data) {
+    this.data = data;
+    this.next = null;
+  }
+
+  this.head = function() {
+    return head;
+  }
+
+  this.add = function(data) {
+    var node = new Node(data);
+    if (head === null) {
+        head = node;
     } else {
-      return false;
+        var current = head;
+        while (current.next) {
+          current = current.next;
+        }
+        current.next = node;
+    }
+    return node;
+  }
+
+  function contains(arr, element) {
+  	for(var i = 0 ; i < arr.length; i++){
+      if(arr[i] === element) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
-}
 
-function removeDuplicates(head) {
-  let seen = [];
-  let previous = null;
-  let current = head;
+  this.removeDuplicates = function(head) {
+    let seen = [];
+    let previous = null;
+    let current = head;
 
-  while (current !== null) {
-	if (contains(seen, current.data)) {
-		previous.next = current.next;
-	} else {
-		seen.push(current.data);
-	    previous = current;
+    while (current !== null) {
+  	if (contains(seen, current.data)) {
+  		previous.next = current.next;
+  	} else {
+  		seen.push(current.data);
+  	    previous = current;
+      }
+  	  current = current.next;
     }
-	  current = current.next;
-  }
-  return seen;
+    return seen;
+    }
 }
 
 var list = {data: 1, next: {data: 2, next: {data: 1, next: {data: 4, next: null }}}}
@@ -87,21 +115,44 @@ Example
 Input: a -> b -> c -> d
 Output: d -> c -> b -> a
 
+function linkedList() {
+  var head = null;
 
-function reverseList(head) {
-  let arrayList = [];
-  let previous = null;
-  let current = head;
-
-  while (current !== null) {
-    if (current) {
-    arrayList.push(current.data);
-    previous = current;
-    current = current.next;
+  var Node = function(data) {
+    this.data = data;
+    this.next = null;
   }
-}
-  arrayList.reverse();
-  return arrayList;
+
+  this.add = function(data) {
+    var node = new Node(data);
+
+    if (head === null) {
+      head = node;
+    } else {
+      var current = head;
+      while (current.next) {
+         current = current.next;
+      }
+      current.next = node;
+    }
+    return node;
+  }
+
+  this.reverseList = function(head) {
+    let arrayList = [];
+    let previous = null;
+    let current = head;
+
+    while (current !== null) {
+      if (current) {
+        arrayList.push(current.data);
+        previous = current;
+        current = current.next;
+      }
+    }
+    arrayList.reverse();
+    return arrayList;
+  }
 }
 
 var list = {data:1, next: {data:2, next: {data:3, next: {data:4, next:null }}}}

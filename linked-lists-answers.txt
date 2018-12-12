@@ -79,7 +79,7 @@ function linkedList() {
 
   function contains(arr, element) {
   	for(var i = 0 ; i < arr.length; i++){
-      if(arr[i] === element) {
+      if(arr.indexOf(element) > -1 ) {
         return true;
       } else {
         return false;
@@ -87,27 +87,30 @@ function linkedList() {
     }
   }
 
-  this.removeDuplicates = function(head) {
+  this.removeDuplicates = function(data) {
     let seen = [];
     let previous = null;
     let current = head;
 
     while (current !== null) {
-  	if (contains(seen, current.data)) {
+     if (contains(seen, current.data)) {
   		previous.next = current.next;
-  	} else {
+  	 } else {
   		seen.push(current.data);
   	    previous = current;
-      }
-  	  current = current.next;
-    }
-    return seen;
-    }
+     }
+  	   current = current.next;
+     }
+  }
 }
 
-var list = {data: 1, next: {data: 2, next: {data: 1, next: {data: 4, next: null }}}}
-console.log(removeDuplicates(list)); //  [1,2,4]
-
+var ll = new linkedList();
+ll.add(1);
+ll.add(3);
+ll.add(3);
+ll.add(5);
+ll.removeDuplicates(ll.head())
+console.log(ll.head()) // (1) -> (3) -> (5)
 
 
 3.Given an unsorted singly linked list, reverse it.
@@ -115,12 +118,17 @@ Example
 Input: a -> b -> c -> d
 Output: d -> c -> b -> a
 
+
 function linkedList() {
   var head = null;
 
   var Node = function(data) {
     this.data = data;
     this.next = null;
+  }
+
+  this.head = function(data) {
+    return head;
   }
 
   this.add = function(data) {
@@ -138,22 +146,32 @@ function linkedList() {
     return node;
   }
 
-  this.reverseList = function(head) {
-    let arrayList = [];
-    let previous = null;
+  this.reverseList = function(data) {
+    let nodeStack = [];
     let current = head;
+    let previous = null;
 
-    while (current !== null) {
-      if (current) {
-        arrayList.push(current.data);
-        previous = current;
-        current = current.next;
-      }
+    while(current) {
+      nodeStack.push(current)
+      previous = current;
+      current = current.next;
     }
-    arrayList.reverse();
-    return arrayList;
+    console.log(nodeStack);
+
+    let reversedList = [];
+
+    while(nodeStack.length !== 0) {
+      let r = nodeStack.pop();
+      reversedList.push(r);
+     }
+    return reversedList;
   }
 }
 
-var list = {data:1, next: {data:2, next: {data:3, next: {data:4, next:null }}}}
-console.log(reverseList(list)); // [4,3,2,1]
+var ll = new linkedList();
+ll.add(1);
+ll.add(2);
+ll.add(3);
+ll.add(4);
+ll.add(5);
+console.log(ll.reverseList(ll.head())) // (5) -> (4) -> (3) ...

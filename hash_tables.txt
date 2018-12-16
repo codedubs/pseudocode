@@ -1,0 +1,223 @@
+
+1.What is a hash table?
+
+A data structure that groups similar collections of data, accessed by a unique identifier, or key.
+
+2.What is hashing?
+
+Hashing is the process of converting arbitrary data, like strings, into a numerical value of fixed
+length--a hash code--through a hashing function.
+
+3.How does a hash table store data?
+
+A hash table stores data as key-value pairs, similar to Javascript objects. These pairings are stored
+at a certain location in an array that is maintained internally in the hash table.
+
+4.How are hash tables and objects different?
+
+Hash tables are stored within an array. Also, objects use strings as key names, whereas hash tables must
+convert strings to a numerical value.
+
+5.Determine whether you would use a hash table or an object to store each of the following pieces of data:
+
+A list of pets and their unique names.
+Hash table
+
+The name, age, and the birthday of your best friend.
+Object
+
+The name and location of every company in a given city.
+Hash table
+
+All of the books checked out from a library by a particular individual.
+Hash table
+
+The primary and secondary phone numbers for a contact.
+Object
+
+
+6.Build a system that allows a sales associate to enter a
+customer's name, address, and phone number into the system and
+look up customers using their phone numbers. Store this information
+in a hash table.
+
+
+let hash = function(key, max) {
+  var hash = 0;
+  for(var i = 0; i < key.length; i++) {
+    hash = hash + key.charCodeAt(i);
+  }
+  return hash % max;
+}
+
+class HashTable {
+
+  constructor() {
+    this.storage = new Array(8).fill(null);
+  }
+
+  add(key, value) {
+    let index = hash(key, this.storage.length);
+
+    if(this.storage[index] === null) {
+      this.storage[index] = {key: key, value: value};
+    } else {
+      this.resize();
+      this.add(key, value);
+    }
+  }
+
+  resize() {
+    let oldStorage = this.storage;
+    this.storage = new Array(oldStorage.length * 2).fill(null);
+
+    for(let i = 0; i <= oldStorage.length; i++) {
+      this.add(oldStorage[i].key, oldStorage[i].value)
+    }
+  }
+
+  lookup(key) {
+    let index = hash(key, this.storage.length);
+
+    if(this.storage[index] === null) {
+      return "Customer not found";
+    } else {
+      return this.storage[index];
+    }
+  }
+}
+
+
+let customerData = new HashTable();
+customerData.add("key", 353153);
+console.log(customerData.lookup("key"));
+customerData.add("235930583810", {name: "John Smith", address: "333 Cane Dr", phone: "235930583810"});
+console.log(customerData.lookup("235930583810"));
+
+
+7.Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+
+let hash = function(key, max) {
+  var hash = 0;
+  for(var i = 0; i < key.length; i++) {
+    hash = hash + key.charCodeAt(i);
+  }
+  return hash % max;
+}
+
+class HashTable {
+
+  constructor() {
+    this.storage = new Array(6).fill(null);
+  }
+
+  add(key, value) {
+    let index = hash(key, this.storage.length);
+
+    if(this.storage[index] === null) {
+      this.storage[index] = {key: key, value: value}
+    } else {
+      this.resize();
+      this.add(key, value);
+    }
+  }
+
+  resize() {
+    let oldStorage = this.storage;
+    this.storage = new Array(oldStorage * 2).fill(null);
+
+    for(let i=0; i <= this.storage.length; i++) {
+      this.add(oldStorage[i].key, oldStorage[i].value);
+    }
+  }
+
+  lookup(key) {
+    let index = hash(key, this.storage.length);
+    return this.storage[index];
+  }
+
+  print() {
+    console.log(this.storage)
+  }
+}
+
+let inventory = new HashTable();
+inventory.add("hammers", 20);
+inventory.add("screwdrivers", 10);
+console.log(inventory.lookup("hammers"))
+inventory.print();
+
+
+8.Build a system that allows digital copies of newspapers to be entered and searched
+by publisher and publication date. Use hash tables to store the necessary data.
+
+
+let hash = (string, max) => {
+  var hash = 0;
+  for(let i=0; i < string.length; i++) {
+    hash = hash + string.charCodeAt(i);
+  }
+  return hash % max;
+}
+
+class HashTable {
+
+  constructor() {
+    this.storage = new Array(3).fill(null);
+  }
+
+  add(key, value) {
+    let index = hash(key, this.storage.length);
+
+    if (this.storage[index] === null) {
+          this.storage[index] = [key,value];
+    }
+
+    if(this.storage[index].length > 1 ) {
+      for (let i = 0; i < this.storage[index].length; i++) {
+        if (this.storage[index][i][0] === key) {
+          this.storage[index][i][1] === value;
+        } else {
+          return this.storage[index].push([key,value]);
+        }
+      }
+    }
+  }
+
+  lookup(key, value) {
+    let index = hash(key, this.storage.length);
+
+    if (this.storage[index] === undefined) {
+      return "Customer not found";
+    }
+
+    if (this.storage[index].length === 1) {
+      return this.storage[index];
+    }
+
+    if (this.storage[index].length > 1) {
+      for (let i=0; i < this.storage[index].length; i++) {
+        if (this.storage[index][i][0] === key && this.storage[index][i][1] === value) {
+           return this.storage[index][i];
+        }
+      }
+    }
+  }
+
+  print() {
+    console.log(this.storage)
+  }
+}
+
+
+let database = new HashTable();
+database.add("SF Chronicle", "12-23-14");
+database.add("NYTimes", "7-1-15");
+database.add("SF Chronicle", "2-2-18");
+database.add("LA Times", "1-17-14");
+database.add("NYTimes", "1-17-14");
+console.log(database.lookup("SF Chronicle", "2-2-18" ))
+console.log(database.lookup("SF Chronicle", "12-23-14" ))
+console.log(database.lookup("NYTimes", "1-17-14" ))
+database.print();

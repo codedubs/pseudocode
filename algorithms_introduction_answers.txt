@@ -1,0 +1,56 @@
+Using proper pseudo-code, describe the following primitive algorithms:
+
+Making coffee;
+
+1. Start with adding the desired amount of coffee grounds into a coffee
+   paper funnel
+2. Place the paper funnel into the coffee machine funnel area
+3. Add the required amount of water into the tank resevoir or coffee pot
+4. Set the machine button to 'on'
+5. After the coffee pot is filled, add to cup
+
+Washing dishes;
+
+1. Add soap to a sponge
+2. Turn on the water faucet
+3. When the water is hot enough, hold dish in one hand
+4. With the other hand, use the wet sponge to go over the dish to clean off food
+5. When it is cleaned off, rinse off dish with the running water
+6. Place the wet dish in a rack to dry off
+7. Proceed to next dish with steps 4 - 6
+8. Finish all the dishes
+
+Making toast;
+
+1. Take a piece of bread and place into the toaster
+2. When the toaster beeps, take out bread
+3. Take out butter from refrigerator
+4. Open the butter package
+5. Grab a butter knife
+6. In one hand, hold the bread; in the other the knife
+7. Use the knife to put a piece of butter on the bread
+8. Spread the butter on the bread all over with the knife
+
+
+As with the knot algorithm, there may be more than one way to solve the problem.
+It is essential to try to pick the best algorithm for a situation. Name three companies
+who created an algorithm that made them successful, e.g., Google's search algorithm. It
+doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's
+algorithm produces more relevant results than other search engines; what about each of your
+cases make them stand out?
+
+eBay stands out as the first, major platform for online auctioning. The algorithms for bidding,
+ease of use, and widespread use revolutionized the way buying and selling could be done online.
+Roomba's algorithm solves the problem of self-cleaning. It was the first of its kind of product,
+a robotic vacuum that runs automatically. Blue Apron is a popular food kit subscription. Their
+algorithm for cooking dinner is what makes them successful. They provide everything needed to
+create a meal including instructions, all sent to the consumers house.
+
+
+
+Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+An algorithm should follow a sequence of logical steps; it should accomplish a goal, and
+execute it in an allotted amount of time. An inefficient algorithm would deviate from
+these requirements. The steps might not be set in a logical manner. Or the amount of
+time that it takes to complete might not be efficient.

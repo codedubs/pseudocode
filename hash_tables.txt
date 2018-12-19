@@ -153,55 +153,51 @@ inventory.print();
 by publisher and publication date. Use hash tables to store the necessary data.
 
 
-let hash = (string, max) => {
+
+
+let hash = (key, value, max) => {
   var hash = 0;
-  for(let i=0; i < string.length; i++) {
-    hash = hash + string.charCodeAt(i);
+  key = key + value;
+  for(let i=0; i < key.length; i++) {
+    hash = hash + key.charCodeAt(i) ;
   }
   return hash % max;
 }
 
+
 class HashTable {
 
   constructor() {
-    this.storage = new Array(3).fill(null);
+    this.storage = new Array(6).fill(null);
   }
 
   add(key, value) {
-    let index = hash(key, this.storage.length);
+    let index = hash(key, value, this.storage.length);
 
-    if (this.storage[index] === null) {
-          this.storage[index] = [key,value];
+    if(this.storage[index] === null) {
+      this.storage[index] = {key: key, value: value}
+    } else {
+      this.resize();
+      this.add(key, value);
     }
+  }
 
-    if(this.storage[index].length > 1 ) {
-      for (let i = 0; i < this.storage[index].length; i++) {
-        if (this.storage[index][i][0] === key) {
-          this.storage[index][i][1] === value;
-        } else {
-          return this.storage[index].push([key,value]);
-        }
-      }
+  resize() {
+    let oldStorage = this.storage;
+
+    this.storage = new Array(oldStorage.length * 2).fill(null)
+    for(let i=0; i <= oldStorage.length; i++) {
+      this.add(oldStorage[i].key, oldStorage[i].value)
     }
   }
 
   lookup(key, value) {
-    let index = hash(key, this.storage.length);
+    let index = hash(key, value, this.storage.length);
 
     if (this.storage[index] === undefined) {
       return "Customer not found";
-    }
-
-    if (this.storage[index].length === 1) {
-      return this.storage[index];
-    }
-
-    if (this.storage[index].length > 1) {
-      for (let i=0; i < this.storage[index].length; i++) {
-        if (this.storage[index][i][0] === key && this.storage[index][i][1] === value) {
-           return this.storage[index][i];
-        }
-      }
+    } else {
+      return this.storage[index]
     }
   }
 
@@ -212,12 +208,9 @@ class HashTable {
 
 
 let database = new HashTable();
-database.add("SF Chronicle", "12-23-14");
-database.add("NYTimes", "7-1-15");
-database.add("SF Chronicle", "2-2-18");
-database.add("LA Times", "1-17-14");
-database.add("NYTimes", "1-17-14");
-console.log(database.lookup("SF Chronicle", "2-2-18" ))
-console.log(database.lookup("SF Chronicle", "12-23-14" ))
-console.log(database.lookup("NYTimes", "1-17-14" ))
+database.add("SF Chron", "1-2-14")
+database.add("SF Chron", "12-2-14")
+database.add("LA Times", "4-6-15")
+database.add("NY Times", "7-7-16")
+console.log(database.lookup("SF Chron", "12-2-14"))
 database.print();

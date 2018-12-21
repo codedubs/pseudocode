@@ -2,34 +2,34 @@ Using proper pseudo-code, describe the following primitive algorithms:
 
 Making coffee;
 
-1. Start with adding the desired amount of coffee grounds into a coffee
-   paper funnel
-2. Place the paper funnel into the coffee machine funnel area
-3. Add the required amount of water into the tank resevoir or coffee pot
-4. Set the machine button to 'on'
-5. After the coffee pot is filled, add to cup
+ADD coffee to funnel
+PLACE funnel inside coffee machine
+ADD water to machine tank
+SET machine to 'on'
+WAIT for coffee pot to fill
+
 
 Washing dishes;
 
-1. Add soap to a sponge
-2. Turn on the water faucet
-3. When the water is hot enough, hold dish in one hand
-4. With the other hand, use the wet sponge to go over the dish to clean off food
-5. When it is cleaned off, rinse off dish with the running water
-6. Place the wet dish in a rack to dry off
-7. Proceed to next dish with steps 4 - 6
-8. Finish all the dishes
+ADD soap to sponge
+Turn on faucet
+WHILE water is hot and there are dishes
+ Hold dish in one hand
+ Hold sponge in other hand
+ Clean dish
+ Rinse dish
+ Place dish in rack
+END WHILE
+
 
 Making toast;
 
-1. Take a piece of bread and place into the toaster
-2. When the toaster beeps, take out bread
-3. Take out butter from refrigerator
-4. Open the butter package
-5. Grab a butter knife
-6. In one hand, hold the bread; in the other the knife
-7. Use the knife to put a piece of butter on the bread
-8. Spread the butter on the bread all over with the knife
+PLACE bread in toaster
+SET toaster to 'on'
+WAIT for bread to brown
+REMOVE bread
+PLACE butter on bread
+SPREAD butter using knife
 
 
 As with the knot algorithm, there may be more than one way to solve the problem.

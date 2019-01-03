@@ -1,0 +1,67 @@
+1.Define and compare recursion and iteration.
+
+Recursion is when a function calls itself repeatedly, until the base case is reached.
+Iteration uses loops to repeat a process and iterate a condition. Iteration is useful
+for iterating through data sets. When the algorithm consists of sub-results with known
+cases, recursion can be implemented.
+
+2.Name five algorithms that are commonly implemented by recursion.
+
+Fibonacci sequence, factorial operation, binary search, merge sort, quick sort.
+
+3.When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+When the operation is straightforward with known cases, and simplicity is an option over
+writing complex iterative code, recursion should be used. For example, math constructs that
+are defined recursively such as Fibonacci and factorial operation, recursion should be used.
+Recursion can also be used to traverse data structures such as linked lists. Recursion should
+be avoided when repeated calculations affect performance. If memory overflow is a concern,
+recursion should be avoided, due to its repetitive nature.
+
+4.Compare the recursive and iterative solutions to the three algorithms from the checkpoint
+(factorial, maximum, and fibonacci). What is similar, and what is different?
+
+All three algorithms have two base cases before recursion begins: they will throw an error if the
+arguments given are zero, and they will return 1 if the arguments are the first 2 values. Factorial
+and Fibonacci algorithms are straightforward calculations while the maximum algorithm is searching
+for a max number, setting the first number as a variable for comparison. Factorial needs to be called
+until it reaches its base case before any values are returned for computation. Fibonacci calls itself
+twice and returns the sum of those values.
+
+5.Given a multi-dimensional collection (such as an array) where the number of dimensions is
+unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+function countElement(item) {
+  let count = 0;
+
+  if (!Array.isArray(item)) {
+    return 1;
+  }
+
+  for(let i = 0; i < item.length; i++) {
+    count = count + countElement(item[i])
+  }
+
+  return count;
+}
+
+6.A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar).
+Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+function check(word) {
+
+  if (word === '') {
+    return '';
+  } else {
+    return check(word.substr(1)) + word[0];
+  }
+}
+
+
+7.Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion".
+Explain why this behavior exhibits properties of recursion.
+
+Recursion in Javascript is when a function calls itself repeatedly as part of its solution. Google
+asking the question is similar to the function prompting itself in recursion, as it is applying a
+repeated procedure (looking for the definition) in trying to define the word. Clicking on the link
+repeatedly will bring about the same page each time, with the page "calling" itself.

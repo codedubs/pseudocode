@@ -1,0 +1,74 @@
+1.What is a real-life scenario that uses linear search?
+
+Using a search to find employee salary in a list of unsorted employee salary data.
+
+2.What is a real-life scenario that uses binary search?
+
+Using a search to find contacts in a phone list whose names start with the letter 'b'.
+
+3.Given the alphabetically sorted collection in this checkpoint, how many iterations would
+it take to find the value G using linear search?
+
+7
+
+4.Given the alphabetically sorted collection in this checkpoint, how many iterations would
+it take to find the value G using binary search?
+
+3
+
+5.Given an unsorted collection of a million items, which algorithm would you choose between
+linear search and binary search? Explain your reasoning.
+
+Binary searches only work on sorted collections. So in this case, only linear search would work.
+
+6.Given a sorted collection of a million items, which algorithm would you choose between linear
+search and binary search? Explain your reasoning.
+
+A binary search. It is more efficient, with time complexity of O(log n). A linear search would
+need to iterate a million times in the worst case scenario. The binary search cuts the search
+in half by finding a middle value for comparison.
+
+7.You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest.
+Write a program to allow you to win the bet.
+
+
+function binarySearch(arr, word) {
+
+  let low = 0;
+  let high = arr.length;
+
+  while(low <= high) {
+    let mid = Math.floor((low + high) / 2);
+
+    if (arr[mid] > word) {
+      high = mid - 1;
+    } else if (arr[mid] < word) {
+      low = mid + 1;
+    } else {
+      return mid;
+    }
+  }
+  return 'mid not found';
+}
+
+
+8.You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank.
+Write a program that will help you net the right fish.
+
+function linearSearch(tank) {
+
+  let nettedfish = '';
+
+  for(let i = 0; i < tank.length; i++) {
+    if (tank[i] === 'goldfish') {
+      nettedfish = tank[i];
+    }
+  }
+
+  return nettedfish;
+
+}
+
+let tank = ['redfish', 'bluefish', 'yellowfish', 'goldfish'];
+
+console.log(linearSearch(tank));

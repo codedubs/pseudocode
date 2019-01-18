@@ -1,0 +1,65 @@
+1.Write pseudocode for bubble sort.
+
+FUNCTION bubbleSort(collection)
+
+  SET swapped to true
+  SET temp to ''
+  WHILE swapped is true
+    SET swapped to false
+    FOR each i in collection
+      IF collection[i] > collection[i + 1]
+        SET temp to collection[i]
+        SET collection[i] to collection[i + 1]
+        SET collection[i +1] to temp
+        SET swapped to true
+      END IF
+    END FOR
+  END WHILE
+  RETURN collection
+
+END FUNCTION
+
+2.Write pseudocode for quicksort.
+
+FUNCTION quickSort(collection)
+
+  SET pivot to collection[0]
+  SET greater to []
+  SET smaller to []
+
+  IF collection.length <= 1
+    RETURN collections
+  END IF
+
+  FOR each i in collection greater than 1
+    IF collection[i] > pivot
+      ADD collection[i] to greater
+    ELSE
+      ADD collection[i] to smaller
+    END IF
+  END FOR
+
+  RETURN CONCATENATE quickSort(smaller), pivot, quickSort(greater)
+
+END FUNCTION
+
+
+3.We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency
+of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort
+and quick sort are much more efficient than the others. Walking through each algorithm with a few sample
+collections may help.
+
+Merge sort and quick sort are more efficient due to their algorithmic nature. Sorts such as bubble sort and
+selection sort use for loops to iterate and compare each item. Merge sort, on the other hand, uses recursion to
+sort. Looking at the bubble sort example, for an item of 7 items, it takes 3 full passes of iterations to
+sort the alphabet, with one full pass of fully sorted elements to conclude the collection is sorted. Comparisons are
+still made even when the items are in their correct positions. Given a large set, many repeated comparisons will
+be made, which is highly inefficient. In the merge sort example, the algorithm divides the array in half. Each half
+is recursively sorted. There is no "passing" over elements that having been sorted already.
+
+
+4.All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how
+it works. What is the ideal input for bucket sort?
+
+Bucket sort works by sorting elements into different buckets, and then sorting the buckets using a separate algorithm or
+applying the bucket sort recursively. It is useful for input that is uniformly distributed over a range.
